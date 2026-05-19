@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .Parent{
+            background-color: rgb(157, 174, 189);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap  : 10px;
+            padding: 50px;
+            width: fit-content;
+            border-radius: 10px;
+
+            position: relative;
+            left: 40%;
+            top: 100px;
+
+
+
+        }
+
+        input{
+            width: 250px;
+            height: 35px;
+            border-radius: 10px;
+            border-style: none;
+            background-color: aliceblue
+            
+        }
+        button{
+
+            width: 70px;
+            height: 35px;
+            border-radius: 7px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+       <div class="Parent">
+         <h2>Manager Login</h2>
+        <input type="text" required placeholder="Enter your name" id="name">
+
+        <input type="tel" maxlength="10" minlength="10" placeholder="Enter your mobile Number" required id="phone">
+
+        <input type="password" required placeholder="Enter The Password" id="pass">
+        <button id="btn"><a href="" id="link" style="text-decoration: none;">Log in</a></button>
+       </div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+  const btn = document.getElementById("btn")
+
+  btn.addEventListener("click",()=>{
+
+
+
+    const managerLogin = [{name : "Nirmala", phone : 9791145901 , pass : "Nirmala5901"}]
+
+    const loginString = JSON.stringify(managerLogin)
+
+    localStorage.setItem("managerLogin",loginString)
+
+
+
+    const name = document.getElementById("name").value
+    const phone = document.getElementById("phone").value
+    const pass = document.getElementById("pass").value
+    const link = document.getElementById("link")
+
+    
+
+
+   if( name == managerLogin[0].name && phone == managerLogin[0].phone && pass == managerLogin[0].pass ){
+
+
+    link.href = "formhandle.html"
+
+  
+
+        
+    
+
+   }
+
+   else{
+
+    alert("Login Failed! Check The login detailgit ")
+
+   
+    
+    
+
+   }
+
+
+
+
+  })
+
+
+
+
+</script>
+    
+</body>
+</html>

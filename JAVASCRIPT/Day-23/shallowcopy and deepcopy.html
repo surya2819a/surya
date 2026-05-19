@@ -1,0 +1,17 @@
+//shallow copy
+
+only first level copy.nested object still same reference
+
+
+let obj1 =name:"devi", address:{city:"chennai"}
+let obj2 ={...obj1}
+
+
+
+
+//deep copy
+
+full copy including nested object
+
+
+let obj2 = JSON.parse(JSON.stringify(obj1))

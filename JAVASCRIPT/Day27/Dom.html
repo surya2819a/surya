@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocumentObjectModel</title>
+    <style>
+        
+        .parent{
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+        }
+        button{
+            background-color: aliceblue;
+            color: black;
+            height: 30px;
+            border-radius: 10px;
+            transition: 1s;
+        }
+        button:hover{
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+
+<body id= "BodyMain"style="background-color: black; display: flex; justify-content: center; margin-top: 10%;">
+    <div class="parent" id ="divparent">
+    <h1 id="Head">Hi this is dom</h1>
+    <button id="btn" onclick="btnClick()">Clickhere</button>
+    </div>
+</body>
+
+
+
+
+<script>
+
+    const domManipulate = document.getElementById("Head")
+    const btn = document.getElementById("btn")
+    const body = document.getElementById("BodyMain")
+    const divparent = document.getElementById("divparent")
+
+    //btn.addEventListener("click",()=>domManipulate.innerText="Hi")
+
+
+
+    // toggle
+
+    btnClick = () => {
+        if (domManipulate.innerText === "Hi this is dom") {
+            domManipulate.innerText = "This is changed"
+            domManipulate.style.color = "black"
+            body.style.backgroundColor = "black"
+            divparent.style.backgroundColor = "white"
+            
+            
+
+        } else if (domManipulate.innerText == "This is changed") {
+            domManipulate.innerText = "Hi this is dom"
+            domManipulate.style.color = "white"
+            body.style.backgroundColor = "white"
+             divparent.style.backgroundColor = "black"
+          
+        }
+    }
+
+
+
+
+</script>
+
+</html>

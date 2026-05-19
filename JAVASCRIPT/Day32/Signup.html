@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-black">
+
+
+    <div class="flex justify-center m-40  ">
+        <div class="bg-red-500 p-10 flex flex-col border rounded-3xl shadow-2xl shadow-red-500" >
+        <h2 class="text-white">Sign Up here</h2>
+        <div >
+            <form action="" class="flex flex-col gap-5 p-4 ">
+                <input type="text" placeholder="Enter The Name" id="name" class="border p-2 rounded-md bg-red-100 w-60">
+                <input type="email" placeholder="Enter the Email" id="mail"  class="border p-2 rounded-md bg-red-100">
+                <input type="password" placeholder="Enter the password" id="pass"  class="border p-2 rounded-md ">
+            </form>
+        </div>
+        <div class="flex flex-row justify-between text-white ">
+    
+            <button><a href="login.html">Sign in</a></button>
+            <button id="btnSubmit" class="border p-1.5 rounded "><a href="" id="signlink">Register</a></button>
+    
+        </div>
+    
+    
+    
+    </div>
+    </div>
+
+    
+    <script>
+
+        let btnSubmit = document.getElementById("btnSubmit")
+
+        btnSubmit.addEventListener("click",()=>{
+
+            let name = document.getElementById("name").value;
+            let mail = document.getElementById("mail").value;
+            let pass = document.getElementById("pass").value;
+            let signLink = document.getElementById("signlink")
+
+
+            let userDetail = JSON.parse(localStorage.getItem("ecomRegister"))|| [];
+             if(!name || !mail || !pass){
+
+                alert("Enter the Detail to Register")
+             }else{
+                 let newUser = {name,mail,pass}
+                userDetail.push(newUser)
+                localStorage.setItem("ecomRegister",JSON.stringify(userDetail))
+
+                signLink.href = "login.html"
+             }
+            
+
+            
+            
+           
+
+
+        })
+
+
+    </script>
+</body>
+</html>

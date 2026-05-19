@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="" id="data">
+        <input type="text" placeholder="Enter your name" id="username">
+        <input type="text" placeholder="Enter your Mobile" id="usermobile">
+        <input type="text" placeholder="Enter your course" id="usercourse">
+        <button id="btn">upload</button>
+    </form>
+
+
+    <table border="1">
+        <thead>
+            <th>Name of Student</th>
+            <th>Mobile No</th>
+            <th>Course</th>
+        </thead>
+        <tbody id ="table">
+
+        </tbody>
+    </table>
+
+
+
+
+     <script>
+        let btn = document.getElementById("btn");
+        btn.addEventListener("click", () => {
+            let name = document.getElementById("username").value;
+            let mobile = document.getElementById("usermobile").value;
+            let course = document.getElementById("usercourse").value;
+
+
+
+            let studentInfo = JSON.parse(localStorage.getItem("student")) || [];
+
+            let newData = { name, mobile, course }
+
+            studentInfo.push(newData);
+
+            let modifiedData = JSON.stringify(studentInfo);
+
+            localStorage.setItem("student", modifiedData)
+
+
+            alert("your detail successfully uploaded")
+
+            document.getElementById("data").reset()
+
+        })
+
+        document.addEventListener("DOMContentLoaded",()=>{
+            let showData = JSON.parse(localStorage.getItem("student"))
+
+            console.log(showData);
+            
+            
+
+            let table = document.getElementById("table")
+
+            table.innerHTML = ""
+
+
+             showData.forEach((e)=>{
+                console.log(e);
+                
+                 let row =  `<tr><td>${e.name}</td> <td>${e.mobile}</td> <td>${e.course}</td></tr>`
+
+               
+                table.innerHTML += row
+             });
+            
+
+        })
+
+     </script>
+
+
+
+
+
+
+</body>
+
+</html>

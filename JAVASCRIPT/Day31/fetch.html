@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+
+
+    <style>
+        .head {
+            display: flex;
+            justify-content: center;
+            color: gray;
+        }
+
+
+        .parent {
+            background-color: rgb(197, 171, 171);
+            padding: 10px;
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 15px;
+
+            
+        }
+    </style>
+</head>
+
+<body style="background-color: black;">
+    <h1 class="head">Fetch API using - to showing the Product Cards</h1>
+    <button><a href="../Day32/login.html" id="lo">Log Out</a></button>
+    <div  id = "dom" style="display: grid; grid-template-columns: repeat(3,1fr); place-items: center; gap: 30px;">
+
+       
+    </div>
+
+</body>
+
+
+
+
+
+
+
+
+<script>
+
+
+
+    let isActive =JSON.parse(localStorage.getItem("Status")) || []
+    console.log(isActive);
+    
+   
+    
+    
+    if(isActive[0].status==true){
+
+
+
+        
+    document.addEventListener("DOMContentLoaded",()=>{
+
+
+        const searchData = async () => {
+
+        let getData = await fetch("https://dummyjson.com/products");
+        let stringData = await getData.json()
+        let finalProduct = stringData.products
+        let dom = document.getElementById("dom")
+        dom.innerHTML=""
+
+        finalProduct.forEach((value,index) => {
+
+            let newStyle = 
+            `
+            
+                    <div class="parent">
+                        <div>
+                             <img src="${value.images}" alt="" style="width: 250px; border-radius: 20px;">
+                            <h3>${value.title}</h3>
+                        </div>
+                        <div>
+                            <div style="display: flex; background-color: gray; width: 270px; justify-content: space-between;align-items: center; padding : 7px">
+                                <p>${value.price}</p>
+                                  <button style="width: 100px;height: 40px; border-radius: 20px;">Buy</button>
+                            </div>
+                        </div>
+                    </div>
+                
+
+
+
+
+            `
+
+            
+                dom.innerHTML += newStyle
+            
+            
+            
+        });
+        
+
+        
+        
+        
+          
+    
+
+
+        
+
+       
+    }
+    searchData()
+
+
+    })
+    
+
+
+    }
+
+
+    else{
+
+        alert("unauthorized access")
+    }
+
+    let logOut = document.getElementById("lo")
+
+    lo.addEventListener("click",()=>{
+
+       isActive = [{status : false}]
+
+        localStorage.setItem("Status", JSON.stringify(isActive))
+    })
+    
+
+</script>
+
+</html>

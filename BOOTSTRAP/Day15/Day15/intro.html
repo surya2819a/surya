@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four tasks · responsive navbar · cards · gallery · floating badge</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f4f6fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1300px;
+            width: 100%;
+        }
+
+        /* ----- TASK 1 – RESPONSIVE NAVBAR (flex + hover + transition + mobile vertical) ----- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1f2937;
+            padding: 1rem 2.5rem;
+            border-radius: 2rem;
+            box-shadow: 0 12px 20px -10px rgba(0,0,0,0.2);
+            margin-bottom: 3.5rem;
+            transition: all 0.2s;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: transform 0.25s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #f3f4f6;
+            padding: 0.5rem 0.2rem;
+            transition: color 0.25s ease, border-bottom 0.25s;
+            border-bottom: 2px solid transparent;
+        }
+
+        /* hover color + transition */
+        .nav-links a:hover {
+            color: #fbbf24;
+            border-bottom-color: #fbbf24;
+        }
+
+        /* ----- TASK 2 – PRODUCT CARD SECTION (6 cards, grid, hover scale + shadow) ----- */
+        .task-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1rem 0;
+            color: #111827;
+            border-left: 8px solid #3b82f6;
+            padding-left: 1.5rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);  /* 3 columns on desktop */
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.8rem;
+            overflow: hidden;
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.15);
+            transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.4s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: scale(1.02) translateY(-6px);
+            box-shadow: 0 30px 40px -10px rgba(0, 60, 120, 0.3);
+        }
+
+        .card-img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            background: #a5b4cb;
+            display: block;
+        }
+
+        .card-content {
+            padding: 1.5rem 1.2rem 1.8rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #0a1e2f;
+        }
+
+        .card-desc {
+            color: #374151;
+            line-height: 1.5;
+            margin-bottom: 1.4rem;
+            font-size: 0.95rem;
+        }
+
+        .card-btn {
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            align-self: flex-start;
+            margin-top: auto;
+            transition: background 0.2s, transform 0.15s;
+            box-shadow: 0 6px 12px rgba(0, 40, 80, 0.2);
+        }
+
+        .card-btn:hover {
+            background: #2563eb;
+            transform: scale(1.02);
+        }
+
+        /* ----- TASK 3 – IMAGE GALLERY (6 images, grid, hover zoom + overlay pseudo) ----- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 15px 20px -10px rgba(0,0,0,0.25);
+            aspect-ratio: 1 / 1;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.45s ease;
+        }
+
+        /* hover zoom effect */
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* overlay text with pseudo-element ::after */
+        .gallery-item::after {
+                 /* overlay text */
+            position: absolute;
+            inset: 0;                  /* cover whole item */
+            background: rgba(0, 20, 40, 0.5);
+            backdrop-filter: blur(3px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 6px black;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;       /* so it doesn't block hover */
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* ----- TASK 4 – FLOATING CARD WITH BADGE (position absolute + z-index + hover) ----- */
+        .badge-card-section {
+            display: flex;
+            justify-content: center;
+            margin: 3rem 0 2rem;
+        }
+
+        .floating-card {
+            position: relative;          /* context for absolute badge */
+            width: 320px;
+            background: linear-gradient(145deg, #ffffff, #f0f4ff);
+            padding: 2.2rem 2rem 2rem 2rem;
+            border-radius: 2.5rem;
+            box-shadow: 0 30px 35px -15px #1e293b80;
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: transform 0.3s, box-shadow 0.4s;
+        }
+
+        /* hover animation for the floating card */
+        .floating-card:hover {
+            transform: rotate(1deg) scale(1.02);
+            box-shadow: 0 40px 50px -12px #0f172a;
+        }
+
+        .badge {
+            position: absolute;          /* absolute position */
+            top: -12px;
+            right: 20px;
+            background: #dc2626;
+            color: white;
+            font-weight: 800;
+            font-size: 1.2rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            box-shadow: 0 8px 14px rgba(185, 28, 28, 0.5);
+            z-index: 10;                 /* explicit z-index */
+            letter-spacing: 1px;
+            border: 2px solid #fee2e2;
+            transition: 0.15s;
+        }
+
+        .badge:hover {
+            background: #b91c1c;
+            transform: scale(1.02);
+        }
+
+        .floating-card h3 {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            color: #0b1e33;
+        }
+
+        .floating-card p {
+            font-size: 1.1rem;
+            color: #1e293b;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ----- MEDIA QUERIES (mobile : vertical menu, 1 card, 1 gallery col) ----- */
+        @media screen and (max-width: 700px) {
+            /* Task 1: vertical menu */
+            .navbar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+                padding: 1.5rem 1.5rem;
+            }
+            .logo {
+                text-align: center;
+            }
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.9rem;
+            }
+            .nav-links a {
+                display: inline-block;
+                width: 100%;
+                text-align: center;
+                padding: 0.5rem 0;
+            }
+
+            /* Task 2: 1 card per row */
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+
+            /* Task 3: 1 image per row */
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+
+            /* optional: keep floating card centered */
+            .floating-card {
+                width: 90%;
+            }
+        }
+
+        /* small touch for bigger desktop: 3 cols are fine, keep consistent */
+        @media screen and (min-width: 701px) and (max-width: 1000px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* extra styles */
+        .footer-note {
+            text-align: center;
+            color: #4b5563;
+            margin-top: 3rem;
+            font-style: italic;
+        }
+        img {
+            background: #a3b8d6; /* fallback while images load */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- TASK 1 – Navigation Bar (flex, logo left, menu right, hover + transition, mobile vertical) -->
+        <nav class="navbar">
+            <div class="logo">⛰️ PEAK</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Journal</a></li>
+                <li><a href="#">Gear</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- TASK 2 – Product card section (6 cards, grid, hover scale, shadow, mobile 1 col) -->
+        <h2 class="task-title">Task 2 </h2>
+        <div class="product-grid">
+            <!-- card 1 -->
+            <article class="card">
+                <img class="card-img" src="images/1.jpg" alt="product">
+                <div class="card-content">
+                    <h3 class="card-title">Alpine Tent</h3>
+                    <p class="card-desc">Lightweight, waterproof, 3-season shelter. Easy setup.</p>
+                    <button class="card-btn">shop now →</button>
+                </div>
+            </article>
+            <!-- card 2 -->
+            <article class="card">
+                <img class="card-img" src="images/2.jpg" alt="product">
+                <div class="card-content">
+                    <h3 class="card-title">Summit Stove</h3>
+                    <p class="card-desc">Portable gas stove with wind protection. Boils in 3 min.</p>
+                    <button class="card-btn">shop now →</button>
+                </div>
+            </article>
+            <!-- card 3 -->
+            <article class="card">
+                <img class="card-img" src="images/3.jpg" alt="product">
+                <div class="card-content">
+                    <h3 class="card-title">Trailblazer 40L</h3>
+                    <p class="card-desc">Ventilated backpanel, hydration compatible, durable.</p>
+                    <button class="card-btn">shop now →</button>
+                </div>
+            </article>
+            <!-- card 4 -->
+            <article class="card">
+                <img class="card-img" src="images/4.jpg" alt="product">
+                <div class="card-content">
+                    <h3 class="card-title">Peak boots</h3>
+                    <p class="card-desc">Waterproof leather, grippy sole, ankle support.</p>
+                    <button class="card-btn">shop now →</button>
+                </div>
+            </article>
+            <!-- card 5 -->
+            <article class="card">
+                <img class="card-img" src="images/5.jpg" alt="product">
+                <div class="card-content">
+                    <h3 class="card-title">Insulated pad</h3>
+                    <p class="card-desc">Self-inflating, R-value 4.5, packs small.</p>
+                    <button class="card-btn">shop now →</button>
+                </div>
+            </article>
+            <!-- card 6 -->
+            <article class="card">
+                <img class="card-img" src="images/6.jpg" alt="product">
+                <div class="card-content">
+                    <h3 class="card-title">Headlamp Pro</h3>
+                    <p class="card-desc">500 lumens, rechargeable, red light mode.</p>
+                    <button class="card-btn">shop now →</button>
+                </div>
+            </article>
+        </div>
+
+        <!-- TASK 3 – Image Gallery (6 images, grid, hover zoom, overlay text with ::after) -->
+        <h2 class="task-title"> Gallery  <h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="images/7.jpg" alt="gallery"></div>
+            <div class="gallery-item"><img src="images/8.jpg" alt="gallery"></div>
+            <div class="gallery-item"><img src="images/9.jpg" alt="gallery"></div>
+            <div class="gallery-item"><img src="images/10.jpg" alt="gallery"></div>
+            <div class="gallery-item"><img src="images/11.jpg" alt="gallery"></div>
+            <div class="gallery-item"><img src="images/12.jpg" alt="gallery"></div>
+        </div>
+
+        <!-- TASK 4 – Floating Card with Badge (absolute, z-index, hover animation) -->
+        <h2 class="task-title"> Card</h2>
+        <div class="badge-card-section">
+            <div class="floating-card">
+                <div class="badge"> NEW</div>   <!-- absolute badge -->
+                <h3>basecamp mug</h3>
+                <p>Double-wall insulated, stainless steel. Keeps coffee hot for 6 hours. Dishwasher safe, BPA-free lid. Limited edition.</p>
+                <p style="margin-top: 1rem; font-weight: 500;">↗ 12 oz · forest green</p>
+            </div>
+        </div>
+        <div class="footer-note">
+            <p>This page is reserved by Peak @ 2026</p>
+    </div>
+    </div>
+</body>
+</html>

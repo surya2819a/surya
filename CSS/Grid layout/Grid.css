@@ -1,0 +1,37 @@
+body{
+    margin:0;
+    background-color: aliceblue;
+}
+.container{
+    display: grid;
+    grid-template-rows: 150px 150px 150px;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 15px;
+    padding: 20px;
+}
+.box{
+    border-radius: 5px;
+}
+.box1{
+    background-color: antiquewhite;
+    grid-row: 1/4;
+}
+.box2{
+    background-color: aqua;
+    grid-column: 2/3;
+}
+.box3{
+    background-color: aquamarine;
+}
+.box4{
+    background-color: azure;
+}
+.box5{
+    background-color: beige;
+}
+.box6{
+    background-color: black;
+}
+.box7{
+    background-color: blanchedalmond;
+}

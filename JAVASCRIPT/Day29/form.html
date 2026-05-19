@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+</head>
+<body>
+   
+     <table>
+        <thead>
+           <th>
+             
+           </th>
+           <th>
+
+           </th>
+
+
+        </thead>
+        <form action="" id="form"></form>
+        <tbody>
+            <tr>
+                <td><label>Enter your Name :</label></td>
+                <td><input type="text" id="name"></td>
+            </tr>
+            <tr>
+                <td><label for="">Enter Your Mobile number</label></td>
+                <td><input type="tel" name="" id="mobile"></td>
+             
+            </tr>
+            <tr>
+                <td></td>
+                <td><button id="btn">submit</button></td>
+            </tr>
+        </tbody>
+         </form>
+    </table>
+  
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        let btn = document.getElementById("btn")
+
+        
+
+        btn.addEventListener("click",(e)=>{
+            e.preventDefault()
+            let name = document.getElementById("name").value
+            let mobile  = document.getElementById("mobile").value
+            let form = document.getElementById("form")
+
+            let userDetail = JSON.parse(localStorage.getItem("register")) || []
+            let data = {name,mobile}
+            userDetail.push(data)
+
+            console.log(userDetail);
+            
+
+            let changeData = JSON.stringify(userDetail);
+
+            localStorage.setItem("register",changeData)
+            
+            alert("Your detail successfully updated")
+           
+            
+            
+
+            form.reset()
+
+
+
+            
+        })
+
+       
+        
+    </script>
+    
+</body>
+</html>

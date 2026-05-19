@@ -1,0 +1,45 @@
+<script>
+
+    let getData = async()=>{
+
+      let fetchData = await fetch("https://dummyjson.com/products")
+
+      let convertdata = await fetchData.json()
+
+      let saveDetail = convertdata.products
+
+      console.log(saveDetail);
+      
+        
+    
+        
+    }
+
+    getData()
+
+
+ let twoFunc = (cb)=>{
+       
+         
+        setTimeout(()=>{
+            console.log("Iam Start");
+            cb()
+            
+        },1000)
+    }
+
+    let oneFunc = ()=>{
+      
+     console.log("iam the end");
+        
+    }
+
+    twoFunc(oneFunc)
+
+
+
+   
+        
+    
+    
+</script>

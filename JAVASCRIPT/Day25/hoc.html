@@ -1,0 +1,35 @@
+<script>
+
+    //array methods using  callback function
+
+    // for each
+    let globalArr =[1,2,3,4,5]
+    let forEachArr =  globalArr.forEach((e,i)=>{console.log(e,i); // e - element , i -index value
+   })
+    
+   
+   
+   // map
+
+  let mapVar = globalArr.map((e,i)=>{console.log(e,i);
+ return i
+   })
+
+   console.log(mapVar); // it return new arr
+
+
+   //fliter
+
+  let varFilter = globalArr.filter((e,i)=>e%2==0);
+  
+
+  console.log(varFilter);
+
+  //
+  
+
+   
+   
+
+
+</script>

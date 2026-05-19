@@ -1,0 +1,126 @@
+<script>
+
+    //Convert a normal function to an arrow function that adds two numbers.
+
+
+    function addSum(num1,num2=0) {
+
+        return num1+num2
+        
+    }
+
+    console.log(addSum(6,4));
+
+    
+
+    
+    addSum=(num1,num2=0)=>{
+        console.log(num1+num2);
+        
+    }
+
+    addSum(1,2)
+
+
+    //Create two variables using let and const.Try updating both and observe behavior.
+
+
+    let var1 = 10; // no declare only reasign
+     var1=20;
+    const var2 = 11;//no declare and no reassign
+
+    console.log("Let variable",var1);
+    console.log("Const variable",var2);
+
+
+    //👉 "Hello Rere, your age is 25" using template literals.
+    
+    
+    console.log(`hello world , your age is ${var1}
+                 using template literal`);
+
+
+
+  // Default Parameter Create a function that takes a name. If no name is passed → print "Guest".
+   
+
+   let arrowDefault = (name = "Guest")=>{
+    if (name === "Guest") {
+        console.log("Guest");
+    }
+    else{
+        console.log(name);
+        
+    }
+   }
+
+
+   arrowDefault()
+    
+    //Check if a number is even or odd using ternary.
+
+    let a = 2
+    let checkTernary = (a%2==0)?"even":"odd";
+
+    console.log(checkTernary);
+
+
+    //Given [10,20,30], extract first two values using destructuring.
+
+    let objArray = {name:"React"   , age :18}
+    let {name,age} = objArray
+    console.log(name,age);
+
+
+    let Array = [10,20,30,40]
+    let [x,y,z] = Array
+
+    console.log(x,y);
+    
+
+    //Merge two arrays [1,2] and [3,4] using spread.
+
+    let spreadArr1 = [1,2,3,4,5]
+
+    let spreadArr2 = [6,7,8,9,0]
+
+    let Merge = [...spreadArr1,...spreadArr2]
+
+    console.log(Merge);
+
+
+    //Add new property city:"Chennai" to an object using spread.
+
+    let objectSpread ={Id:101,class:"Fullstack"}
+
+    objectSpread = {...objectSpread,city:"Chennai"}
+
+    console.log(objectSpread);
+
+
+    //Given [1,2,3,4], store first value in a and remaining in rest.
+
+
+    let [u,...rest] = spreadArr1
+
+   console.log(u,rest);
+
+
+   //Access user.name safely when object may be empty.
+
+
+   //If variable is null, print "Default Value"
+
+
+   let value = null
+   console.log(value??"empty");
+   
+   
+
+    
+    
+    
+    
+     
+   
+</script>

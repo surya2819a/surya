@@ -1,0 +1,69 @@
+body{
+margin:0;
+font-family:Arial;
+}
+
+/* header */
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 80px;
+background:#ff5200;
+color:white;
+}
+
+.nav a{
+margin:0 15px;
+text-decoration:none;
+color:white;
+}
+
+.app{
+background:transparent;
+border:1px solid white;
+padding:10px 15px;
+color:white;
+}
+
+.signin{
+background:black;
+color:white;
+padding:10px 20px;
+border:none;
+}
+
+/* hero section */
+
+.hero{
+background:#ff5200;
+text-align:center;
+padding:80px 20px;
+color:white;
+}
+
+.search-box input{
+padding:15px;
+margin:10px;
+width:300px;
+border-radius:10px;
+border:none;
+}
+
+/* cards */
+
+.services{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:40px;
+}
+
+.card{
+background:#f2f2f2;
+padding:40px;
+border-radius:20px;
+width:220px;
+text-align:center;
+}

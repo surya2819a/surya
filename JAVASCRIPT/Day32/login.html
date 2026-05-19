@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign_In</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-black">
+
+    <div
+        class="flex justify-center w-90 m-40 flex-col bg-gray-400  p-10  relative left-100 gap-5 rounded-2xl shadow-2xl shadow-gray-500">
+
+        <h1>Sign IN here</h1>
+
+        <div class="flex flex-col gap-5 p-4 relative right-4">
+            <input type="email" placeholder="Enter the Email" id="mailSignin" class="border w-70 p-1.5 rounded">
+            <input type="password" placeholder="Enter the password" id="passSignin" class="border w-70 p-1.5 rounded">
+        </div>
+
+
+        <div class="flex flex-row  text-black  justify-between">
+            <button id="btnSubmit"><a href="Signup.html">Sign up</a></button>
+            <button id="btnSignin" class="border p-1.5 rounded "><a href="" id="link">Sign in</a></button>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <script>
+
+
+        let btnSignin = document.getElementById("btnSignin")
+        btnSignin.addEventListener("click", () => {
+
+            let mailSignin = document.getElementById("mailSignin").value;
+            let passSignin = document.getElementById("passSignin").value;
+            let link = document.getElementById("link")
+
+            let checkData = JSON.parse(localStorage.getItem("ecomRegister"))
+            let isActive = {status : false}
+
+
+
+            if (checkData.find(check => check.mail == mailSignin && check.pass == passSignin)) {
+                alert("Success")
+                link.href = "../Day31/fetch.html"
+                isActive = {status : true}
+
+                localStorage.setItem("Status", JSON.stringify(isActive))
+
+
+
+
+            } else {
+                alert("failed")
+            }
+
+
+
+
+        })
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

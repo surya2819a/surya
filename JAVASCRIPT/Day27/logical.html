@@ -1,0 +1,95 @@
+<script>
+    //find the second largest in array
+
+    let numberArr = [1,2,3,4,5,6,7,8,9]
+    let largestArr = 0
+
+    for(let i=0;i<numberArr.length;i++){
+        if(numberArr[i]<numberArr[i+1] && numberArr[i+1]<numberArr[i+2]){
+            largestArr = numberArr[i+2]
+        }
+    }
+
+    console.log(largestArr);
+
+    //reverse a String
+
+    let userName = "level"
+    let newUser = [...userName]
+    var reversedString = ""
+    
+    for(let i=newUser.length-1;i>=0;i--){
+
+        reversedString += newUser[i]
+
+    }
+
+    console.log(reversedString);
+
+    //palindrome fo given string
+    let newReveseStr = [...reversedString]
+    console.log(newReveseStr);
+    console.log(newUser);
+
+    let  checkPalin = false
+    
+    
+    
+    for(let a = 0 ;a<newReveseStr.length;a++){
+      
+      if(newUser[a]==reversedString[a]){
+        checkPalin = true
+      }else{
+        checkPalin = false
+      }
+        
+       
+       
+    }
+
+    console.log(checkPalin);
+
+
+//factorial 
+  
+
+let result = 1;
+for(let a = 10; a>=1;a--){
+    result *=a
+    
+}
+
+console.log(result);
+
+
+//prime number
+
+let checkPrime = 4
+let resultPrime = false
+
+for (let p=2;p<=checkPrime;p++){
+    if(checkPrime%p==0){
+        resultPrime = true
+        break
+        
+    }   
+    
+}
+
+
+if (resultPrime == true) {
+    console.log(" this is prime number");
+    
+    
+}else if (resultPrime == false){
+    console.log("this is not a prime number");
+}
+
+
+
+
+
+   
+    
+   
+</script>
